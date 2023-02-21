@@ -1,14 +1,13 @@
-node_modules/**/*
-.expo/*
-npm-debug.*
+MyTripDiary/node_modules/**/*
+MyTripDiary/.expo/*
+MyTripDiary/npm-debug.*
 *.jks
 *.p8
 *.p12
 *.key
 *.mobileprovision
 *.orig.*
-web-build/
+MyTripDiary/web-build/
 
 # macOS
 .DS_Store
-MyTripDiary/firebaseConfig.js
