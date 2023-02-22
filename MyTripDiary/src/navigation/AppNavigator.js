@@ -13,21 +13,24 @@ import TripInfo from "../screens/TripInfo";
 import Settings from "../screens/Settings";
 import Analytics from "../screens/Analytics";
 import Loading from "../screens/utils/Loading";
+import SavedTrips from "../screens/SavedTrips";
 // Auth screens
 import Login from "../screens/auth/Login";
 import Register from "../screens/auth/Register";
 import ForgetPassword from "../screens/auth/ForgetPassword";
 import { AuthContext } from "../provider/AuthProvider";
 
+
 // Better put your these secret keys in .env file
 const firebaseConfig = {
-  apiKey: "AIzaSyAWhbPREvmN51UzukuNu4rV5LE8cAp4O7s",
-  authDomain: "swe-project-2023.firebaseapp.com",
-  projectId: "swe-project-2023",
-  storageBucket: "swe-project-2023.appspot.com",
-  messagingSenderId: "522596541462",
-  appId: "1:522596541462:web:dde04cd3a8df9db9ba4137",
-  measurementId: "G-ZG1FX7W0L4"
+  apiKey: "AIzaSyBEObzGMQ5oBnM7QTDPMx5S53YZVWkT2CI",
+  authDomain: "mytripdiary-186a4.firebaseapp.com",
+  databaseURL: "https://mytripdiary-186a4-default-rtdb.asia-southeast1.firebasedatabase.app",
+  projectId: "mytripdiary-186a4",
+  storageBucket: "mytripdiary-186a4.appspot.com",
+  messagingSenderId: "1034425680288",
+  appId: "1:1034425680288:web:ad71dd6aa25aaaecfaa4c5",
+  measurementId: "G-QT7Z8H7N8K"
 };
 
 if (getApps().length === 0) {
@@ -58,6 +61,7 @@ const Main = () => {
       }}
     >
       <MainStack.Screen name="MainTabs" component={MainTabs} />
+      <MainStack.Screen name="SavedTrips" component={SavedTrips} />
       <MainStack.Screen name="TripInfo" component={TripInfo} />
     </MainStack.Navigator>
   );

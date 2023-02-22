@@ -1,5 +1,5 @@
 import React from "react";
-import { View, Linking } from "react-native";
+import { View, Linking, Pressable } from "react-native";
 import { getAuth, signOut } from "firebase/auth";
 import {
   Layout,
@@ -24,37 +24,39 @@ export default function ({ navigation }) {
           marginHorizontal: 20,
         }}
       >
-        <Section>
-          <SectionContent>
-            <Text fontWeight="bold" style={{ textAlign: "center" }}>
-              Saved Trips
-            </Text>
-            <Button
-              style={{ marginTop: 10 }}
-              text="Google Maps"
-              status="info"
-              onPress={() => Linking.openURL("https://www.google.com/maps")}
-            />
-            <Button
-              text="Trip 1"
-              onPress={() => {
-                navigation.navigate("TripInfo");
-              }}
-              style={{
-                marginTop: 10,
-              }}
-            />
-            <Button
-              text="Trip 2"
-              onPress={() => {
-                navigation.navigate("TripInfo");
-              }}
-              style={{
-                marginTop: 10,
-              }}
-            />
-          </SectionContent>
-        </Section>
+        <Pressable onPress={() => navigation.navigate('SavedTrips')}>
+          <Section>
+            <SectionContent>
+              <Text fontWeight="bold" style={{ textAlign: "center" }}>
+                Saved Trips
+              </Text>
+              <Button
+                style={{ marginTop: 10 }}
+                text="Google Maps"
+                status="info"
+                onPress={() => Linking.openURL("https://www.google.com/maps")}
+                />
+              <Button
+                text="Trip 1"
+                onPress={() => {
+                  navigation.navigate("TripInfo");
+                }}
+                style={{
+                  marginTop: 10,
+                }}
+                />
+              <Button
+                text="Trip 2"
+                onPress={() => {
+                  navigation.navigate("TripInfo");
+                }}
+                style={{
+                  marginTop: 10,
+                }}
+                />
+            </SectionContent>
+          </Section>
+        </Pressable>
       </View>
     </Layout>
   );
