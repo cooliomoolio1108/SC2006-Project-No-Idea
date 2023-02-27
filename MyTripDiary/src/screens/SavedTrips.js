@@ -1,15 +1,18 @@
 import { Ionicons } from "@expo/vector-icons";
-import { FlatList, StyleSheet } from "react-native";
-import { Layout, Section, SectionContent, Text, TopNav } from "react-native-rapi-ui";
+import { FlatList, Pressable, StyleSheet } from "react-native";
+import { Layout, Section, SectionContent, Text, TopNav, useTheme } from "react-native-rapi-ui";
 import { Trip } from "../models/Trip";
 
 function SavedTrips({ navigation }) {
+    const { isDarkmode } = useTheme();
     return (
         <Layout>
             <TopNav
-                leftContent={<Ionicons name="chevron-back" size={20}/>}
+                leftContent={<Ionicons name="chevron-back" color={isDarkmode ? 'white' : 'black'} size={20}/>}
                 leftAction={navigation.goBack}
                 middleContent="Saved Trips"
+                rightContent={<Text size="md">Add Trip</Text>}
+                rightAction={() => {navigation.navigate('AddSavedTrip')}}
             />
             <FlatList 
                 data={dummyData}
@@ -20,13 +23,16 @@ function SavedTrips({ navigation }) {
 }
 
 function renderSavedTrip(SavedTrips) {
+    const trip = SavedTrips.item;
     return (
-        <Section style={styles.section}>
-            <Text>{SavedTrips.item.name}</Text>
-            <SectionContent>
-                <Text>{SavedTrips.item.originName} ---------------------------- {SavedTrips.item.destName}</Text>
-            </SectionContent>
-        </Section>
+        <Pressable>
+            <Section style={styles.section}>
+                <Text>{trip.name}</Text>
+                <SectionContent>
+                    <Text>{trip.originName} to {trip.destName}</Text>
+                </SectionContent>
+            </Section>
+        </Pressable>
     )   
 }
 
@@ -35,14 +41,19 @@ const styles = StyleSheet.create({
         elevation: 16,
         margin: 8,
         alignItems: 'center'
-    },
+    }
 })
 
 let dummyData = [
     new Trip('Go to school', 'Sentosa Cove', "location", 'NTU', "location"),
     new Trip('Go home', 'NTU', "location", 'Sentosa Cove', "location"),
     new Trip('Go to Orchard', 'Sentosa Cove', "location", 'Orchard', "location"),
-    new Trip('Go to Seans', 'Sentosa Cove', "location", 'Sean', "location"),
+    new Trip('Go back to hall', 'NTU', "location", 'Hall 5', "location"),
+    new Trip('Go back to hall', 'NTU', "location", 'Hall 5', "location"),
+    new Trip('Go back to hall', 'NTU', "location", 'Hall 5', "location"),
+    new Trip('Go back to hall', 'NTU', "location", 'Hall 5', "location"),
+    new Trip('Go back to hall', 'NTU', "location", 'Hall 5', "location"),
+    new Trip('Go back to hall', 'NTU', "location", 'Hall 5', "location"),
     new Trip('Go back to hall', 'NTU', "location", 'Hall 5', "location")
 ];
 

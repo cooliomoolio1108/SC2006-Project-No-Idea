@@ -19,6 +19,7 @@ import Login from "../screens/auth/Login";
 import Register from "../screens/auth/Register";
 import ForgetPassword from "../screens/auth/ForgetPassword";
 import { AuthContext } from "../provider/AuthProvider";
+import AddSavedTrip from "../screens/AddSavedTrip";
 
 
 // Better put your these secret keys in .env file
@@ -62,6 +63,7 @@ const Main = () => {
     >
       <MainStack.Screen name="MainTabs" component={MainTabs} />
       <MainStack.Screen name="SavedTrips" component={SavedTrips} />
+      <MainStack.Screen name="AddSavedTrip" component={AddSavedTrip} />
       <MainStack.Screen name="TripInfo" component={TripInfo} />
     </MainStack.Navigator>
   );
