@@ -10,6 +10,8 @@ import TabBarText from "../components/utils/TabBarText";
 //Screens
 import Home from "../screens/Home";
 import TripInfo from "../screens/TripInfo";
+import AddTrip from "../screens/AddTrip";
+import PriceEstimatorPopup from "../screens/PriceEstimatorPopup";
 import Settings from "../screens/Settings";
 import Analytics from "../screens/Analytics";
 import Loading from "../screens/utils/Loading";
@@ -63,6 +65,19 @@ const Main = () => {
   );
 };
 
+const AddTripStack = createNativeStackNavigator();
+const AddTripMain = () => {
+  return (
+    <AddTripStack.Navigator
+      screenOptions={{
+        headerShown: false,
+      }}>
+      <AddTripStack.Screen name="AddTrip" component={AddTrip} />
+      <AddTripStack.Screen name="PriceEstimator" component={PriceEstimatorPopup} />
+    </AddTripStack.Navigator>
+  )
+}
+
 const Tabs = createBottomTabNavigator();
 const MainTabs = () => {
   const { isDarkmode } = useTheme();
@@ -86,6 +101,18 @@ const MainTabs = () => {
           ),
           tabBarIcon: ({ focused }) => (
             <TabBarIcon focused={focused} icon={"md-home"} />
+          ),
+        }}
+      />
+      <Tabs.Screen
+        name="AddTripMain"
+        component={AddTripMain}
+        options={{
+          tabBarLabel: ({ focused }) => (
+            <TabBarText focused={focused} title="Add Trip" />
+          ),
+          tabBarIcon: ({ focused }) => (
+            <TabBarIcon focused={focused} icon={"add"} />
           ),
         }}
       />
