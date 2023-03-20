@@ -5,6 +5,20 @@ import { Trip } from "../models/Trip";
 
 function SavedTrips({ navigation }) {
     const { isDarkmode } = useTheme();
+    const renderSavedTrip = ({ item }) => {
+        const trip = item;
+        return (
+            <Pressable onPress={() => {navigation.navigate("SavedTripInfo", {trip})}}>
+                <Section style={styles.section}>
+                    <Text>{trip.name}</Text>
+                    <SectionContent>
+                        <Text>{trip.originName} to {trip.destName}</Text>
+                    </SectionContent>
+                </Section>
+            </Pressable>
+        )   
+    }
+    
     return (
         <Layout>
             <TopNav
@@ -12,7 +26,7 @@ function SavedTrips({ navigation }) {
                 leftAction={navigation.goBack}
                 middleContent="Saved Trips"
                 rightContent={<Text size="md">Add Trip</Text>}
-                rightAction={() => {navigation.navigate('AddSavedTrip')}}
+                rightAction={() => {navigation.navigate()}}
             />
             <FlatList 
                 data={dummyData}
@@ -20,20 +34,6 @@ function SavedTrips({ navigation }) {
             />
         </Layout>
     )
-}
-
-function renderSavedTrip(SavedTrips) {
-    const trip = SavedTrips.item;
-    return (
-        <Pressable>
-            <Section style={styles.section}>
-                <Text>{trip.name}</Text>
-                <SectionContent>
-                    <Text>{trip.originName} to {trip.destName}</Text>
-                </SectionContent>
-            </Section>
-        </Pressable>
-    )   
 }
 
 const styles = StyleSheet.create({

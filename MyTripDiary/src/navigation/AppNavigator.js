@@ -14,12 +14,12 @@ import Settings from "../screens/Settings";
 import Analytics from "../screens/Analytics";
 import Loading from "../screens/utils/Loading";
 import SavedTrips from "../screens/SavedTrips";
+import SavedTripInfo from "../screens/SavedTripInfo";
 // Auth screens
 import Login from "../screens/auth/Login";
 import Register from "../screens/auth/Register";
 import ForgetPassword from "../screens/auth/ForgetPassword";
 import { AuthContext } from "../provider/AuthProvider";
-import AddSavedTrip from "../screens/AddSavedTrip";
 
 
 // Better put your these secret keys in .env file
@@ -63,7 +63,7 @@ const Main = () => {
     >
       <MainStack.Screen name="MainTabs" component={MainTabs} />
       <MainStack.Screen name="SavedTrips" component={SavedTrips} />
-      <MainStack.Screen name="AddSavedTrip" component={AddSavedTrip} />
+      <MainStack.Screen name="SavedTripInfo" component={SavedTripInfo} />
       <MainStack.Screen name="TripInfo" component={TripInfo} />
     </MainStack.Navigator>
   );
