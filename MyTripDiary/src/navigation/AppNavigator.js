@@ -10,6 +10,8 @@ import TabBarText from "../components/utils/TabBarText";
 //Screens
 import Home from "../screens/Home";
 import TripInfo from "../screens/TripInfo";
+import TripHistory from "../screens/TripHistory";
+import EditPrice from "../screens/EditPrice";
 import Settings from "../screens/Settings";
 import Analytics from "../screens/Analytics";
 import Loading from "../screens/utils/Loading";
@@ -59,6 +61,8 @@ const Main = () => {
     >
       <MainStack.Screen name="MainTabs" component={MainTabs} />
       <MainStack.Screen name="TripInfo" component={TripInfo} />
+      <MainStack.Screen name="TripHistory" component={TripHistory} />
+      <MainStack.Screen name="EditPrice" component={EditPrice} />
     </MainStack.Navigator>
   );
 };
