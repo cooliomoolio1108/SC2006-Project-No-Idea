@@ -35,7 +35,7 @@ export default function ({ navigation }) {
                 text="Google Maps"
                 status="info"
                 onPress={() => Linking.openURL("https://www.google.com/maps")}
-                />
+              />
               <Button
                 text="Trip 1"
                 onPress={() => {
@@ -44,7 +44,7 @@ export default function ({ navigation }) {
                 style={{
                   marginTop: 10,
                 }}
-                />
+              />
               <Button
                 text="Trip 2"
                 onPress={() => {
@@ -53,7 +53,16 @@ export default function ({ navigation }) {
                 style={{
                   marginTop: 10,
                 }}
-                />
+              />
+              <Button
+                text="Trip History"
+                onPress={() => {
+                  navigation.navigate("TripHistory");
+                }}
+                style={{
+                  marginTop: 10,
+                }}
+              />
             </SectionContent>
           </Section>
         </Pressable>

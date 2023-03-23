@@ -10,6 +10,11 @@ import TabBarText from "../components/utils/TabBarText";
 //Screens
 import Home from "../screens/Home";
 import TripInfo from "../screens/TripInfo";
+import AddTrip from "../screens/AddTrip";
+import PriceEstimatorPopup from "../screens/PriceEstimatorPopup";
+import CarParkAvailability from "../screens/CarParkAvailability";
+import TripHistory from "../screens/TripHistory";
+import EditPrice from "../screens/EditPrice";
 import Settings from "../screens/Settings";
 import Analytics from "../screens/Analytics";
 import Loading from "../screens/utils/Loading";
@@ -65,9 +70,25 @@ const Main = () => {
       <MainStack.Screen name="SavedTrips" component={SavedTrips} />
       <MainStack.Screen name="SavedTripInfo" component={SavedTripInfo} />
       <MainStack.Screen name="TripInfo" component={TripInfo} />
+      <MainStack.Screen name="TripHistory" component={TripHistory} />
+      <MainStack.Screen name="EditPrice" component={EditPrice} />
     </MainStack.Navigator>
   );
 };
+
+const AddTripStack = createNativeStackNavigator();
+const AddTripMain = () => {
+  return (
+    <AddTripStack.Navigator
+      screenOptions={{
+        headerShown: false,
+      }}>
+      <AddTripStack.Screen name="AddTrip" component={AddTrip} />
+      <AddTripStack.Screen name="PriceEstimator" component={PriceEstimatorPopup} />
+      <AddTripStack.Screen name="CarParkAvailability" component={CarParkAvailability} />
+    </AddTripStack.Navigator>
+  )
+}
 
 const Tabs = createBottomTabNavigator();
 const MainTabs = () => {
@@ -92,6 +113,18 @@ const MainTabs = () => {
           ),
           tabBarIcon: ({ focused }) => (
             <TabBarIcon focused={focused} icon={"md-home"} />
+          ),
+        }}
+      />
+      <Tabs.Screen
+        name="AddTripMain"
+        component={AddTripMain}
+        options={{
+          tabBarLabel: ({ focused }) => (
+            <TabBarText focused={focused} title="Add Trip" />
+          ),
+          tabBarIcon: ({ focused }) => (
+            <TabBarIcon focused={focused} icon={"add"} />
           ),
         }}
       />
