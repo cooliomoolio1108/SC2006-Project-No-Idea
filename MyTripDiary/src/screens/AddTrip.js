@@ -1,5 +1,5 @@
 import React from "react";
-import { View } from "react-native";
+import { Modal, View } from "react-native";
 import { GooglePlacesAutocomplete } from 'react-native-google-places-autocomplete';
 import {
     Layout,
@@ -20,14 +20,109 @@ export default function ({ navigation }) {
     const [startLocation, setStartLocation] = React.useState('');
     const [endLocation, setEndLocation] = React.useState('');
     const [pickerValue, setPickerValue] = React.useState(null);
+    const [carParkViewVisible, setCarParkViewVisible] = React.useState(false);
+    const [routeShowerVisible, setRouteShowerVisible] = React.useState(false);
     const items = [
         { label: 'Private Car', value: 'Car' },
         { label: 'Public Transport', value: 'Public' },
         { label: 'Taxi', value: 'Taxi' },
     ];
     return (
-        <Layout style={{ flexDirection: 'column' }}
-        >
+        <Layout style={{ flexDirection: 'column' }}>
+            <Modal animationType="slide"
+                transparent={true}
+                visible={carParkViewVisible}
+                onRequestClose={() => {
+                    setCarParkViewVisible(!carParkViewVisible);
+                }}>
+                <View style={{
+                    flex: 1,
+                    alignItems: "center",
+                    justifyContent: "center",
+                    padding: 20,
+                    width: '100%',
+                }}>
+                    <View style={{
+                        margin: 20,
+                        backgroundColor: 'white',
+                        borderRadius: 20,
+                        padding: 35,
+                        alignItems: 'center',
+                        shadowColor: '#000',
+                        shadowOffset: {
+                            width: 0,
+                            height: 2,
+                        },
+                        shadowOpacity: 0.25,
+                        shadowRadius: 4,
+                        elevation: 5,
+                    }}>
+                        <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-evenly' }}>
+                            <Text style={{ fontWeight: "bold", fontFamily: "Ubuntu_400Regular" }}>Carpark Availability</Text>
+                            <Button text={<Ionicons
+                                name="close"
+                                size={20}
+                            />} color="red" size="sm" onPress={() => setCarParkViewVisible(!carParkViewVisible)} />
+                        </View>
+                        <Text>Some Map Diagram here</Text>
+                        <Text>Some Map Diagram here</Text>
+                        <Text>Some Map Diagram here</Text>
+                        <Text>Some Map Diagram here</Text>
+                        <Text>Some Map Diagram here</Text>
+                        <Text>Some Map Diagram here</Text>
+                        <Text>Some Map Diagram here</Text>
+                        <Text>Some Map Diagram here</Text>
+                        <Text>Some Map Diagram here</Text>
+                    </View>
+                </View>
+            </Modal>
+            <Modal animationType="slide"
+                transparent={true}
+                visible={routeShowerVisible}
+                onRequestClose={() => {
+                    setRouteShowerVisible(!routeShowerVisible);
+                }}>
+                <View style={{
+                    flex: 1,
+                    alignItems: "center",
+                    justifyContent: "center",
+                    padding: 20,
+                    width: '100%',
+                }}>
+                    <View style={{
+                        margin: 20,
+                        backgroundColor: 'white',
+                        borderRadius: 20,
+                        padding: 35,
+                        alignItems: 'center',
+                        shadowColor: '#000',
+                        shadowOffset: {
+                            width: 0,
+                            height: 2,
+                        },
+                        shadowOpacity: 0.25,
+                        shadowRadius: 4,
+                        elevation: 5,
+                    }}>
+                        <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', width: 150 }}>
+                            <Text style={{ fontWeight: "bold", fontFamily: "Ubuntu_400Regular" }}>Route</Text>
+                            <Button text={<Ionicons
+                                name="close"
+                                size={20}
+                            />} color="red" size="sm" onPress={() => setRouteShowerVisible(!routeShowerVisible)} />
+                        </View>
+                        <Text>Some Map Diagram here</Text>
+                        <Text>Some Map Diagram here</Text>
+                        <Text>Some Map Diagram here</Text>
+                        <Text>Some Map Diagram here</Text>
+                        <Text>Some Map Diagram here</Text>
+                        <Text>Some Map Diagram here</Text>
+                        <Text>Some Map Diagram here</Text>
+                        <Text>Some Map Diagram here</Text>
+                        <Text>Some Map Diagram here</Text>
+                    </View>
+                </View>
+            </Modal>
             <TopNav
                 middleContent="Add Trip"
                 leftContent={
@@ -119,7 +214,14 @@ export default function ({ navigation }) {
                     items={items}
                     value={pickerValue}
                     placeholder="Choose your mode of Transport"
-                    onValueChange={(val) => navigation.navigate("PriceEstimator")}
+                    onValueChange={(val) => {
+                        console.log(val)
+                        if (val == "Car") {
+                            setCarParkViewVisible(true);
+                        } else {
+                            setRouteShowerVisible(true);
+                        }
+                    }}
                 />
                 <Button text="Add Trip" onPress={() => console.log('Button tapped')} />
             </View>

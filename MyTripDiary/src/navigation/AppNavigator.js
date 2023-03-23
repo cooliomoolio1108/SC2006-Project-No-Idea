@@ -12,6 +12,7 @@ import Home from "../screens/Home";
 import TripInfo from "../screens/TripInfo";
 import AddTrip from "../screens/AddTrip";
 import PriceEstimatorPopup from "../screens/PriceEstimatorPopup";
+import CarParkAvailability from "../screens/CarParkAvailability";
 import Settings from "../screens/Settings";
 import Analytics from "../screens/Analytics";
 import Loading from "../screens/utils/Loading";
@@ -74,6 +75,7 @@ const AddTripMain = () => {
       }}>
       <AddTripStack.Screen name="AddTrip" component={AddTrip} />
       <AddTripStack.Screen name="PriceEstimator" component={PriceEstimatorPopup} />
+      <AddTripStack.Screen name="CarParkAvailability" component={CarParkAvailability} />
     </AddTripStack.Navigator>
   )
 }
