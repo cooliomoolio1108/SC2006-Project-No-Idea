@@ -1,3 +1,13 @@
+/**
+
+A screen component for login.
+This component is a screen that provides a login form for the user. It uses Firebase authentication
+to authenticate the user's email and password, and provides functionality for the user to switch
+between light and dark themes.
+@param {object} navigation - The navigation object for the screen, which provides functions for
+navigating to other screens.
+@returns {JSX.Element} A React component that renders the login screen.
+*/
 import React, { useState } from "react";
 import {
   ScrollView,
@@ -19,11 +29,18 @@ import {
 
 export default function ({ navigation }) {
   const { isDarkmode, setTheme } = useTheme();
-  const auth = getAuth();
-  const [email, setEmail] = useState("");
+  const auth = getAuth(); // Initialize Firebase authentication
+  const [email, setEmail] = useState(""); // Initialize state for email, password, and loading status
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
 
+/**
+Logs the user in with their email and password.
+This function sets the loading status to true, and then uses Firebase authentication to
+sign in the user with their email and password. If there is an error, it sets the loading
+status to false and shows an error message to the user.
+*/
+  
   async function login() {
     setLoading(true);
     await signInWithEmailAndPassword(auth, email, password).catch(function (
