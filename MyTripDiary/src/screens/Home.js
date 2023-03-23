@@ -11,9 +11,16 @@ import {
   useTheme,
 } from "react-native-rapi-ui";
 
+/**
+ * Represents a screen component for displaying saved trips and navigating to trip-related screens.
+ * @param {object} navigation - The navigation object from React Navigation.
+ * @returns {JSX.Element} A JSX element representing the saved trips screen.
+ */
+
+
 export default function ({ navigation }) {
   const { isDarkmode, setTheme } = useTheme();
-  const auth = getAuth();
+  const auth = getAuth(); // Get Firebase auth object
   return (
     <Layout>
       <View
