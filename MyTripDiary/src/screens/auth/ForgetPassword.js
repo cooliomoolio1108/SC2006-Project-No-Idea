@@ -16,6 +16,10 @@ import {
   themeColor,
 } from "react-native-rapi-ui";
 
+/**
+ * Displays ForgetPassword screen
+ * @param {Object} navigation 
+ */
 export default function ({ navigation }) {
   const { isDarkmode, setTheme } = useTheme();
   const auth = getAuth();
