@@ -1,5 +1,5 @@
 /** 
-* A constructor for the trip model
+* A constructor for the trip pricing model
 * @param {number} estimatedPrice - Estimated Trip Price, as determined by the app
 * @param {number} userInputPrice - Price given by user
 */
