@@ -53,6 +53,15 @@ export default function ({ navigation }) {
                 marginTop: 10,
               }}
             />
+            <Button
+              text="Trip History"
+              onPress={() => {
+                navigation.navigate("TripHistory");
+              }}
+              style={{
+                marginTop: 10,
+              }}
+            />
           </SectionContent>
         </Section>
       </View>
