@@ -1,57 +1,79 @@
-import React from 'react';
-import { View, Linking } from 'react-native';
-import { Layout, Text } from 'react-native-rapi-ui';
-import { getAuth, signOut } from "firebase/auth";
-import {
-	Button,
-	TopNav,
-	Section,
-	SectionContent,
-	useTheme,
-  } from "react-native-rapi-ui";
+import { StyleSheet, Text, View, SafeAreaView, Button, TouchableOpacity, Image} from 'react-native';
+import personalisation from './personalisation';
 
-export default function ({ navigation }) {
-	const { isDarkmode, setTheme } = useTheme();
-  	const auth = getAuth();
-	return (
-		<Layout>
-			<View
-				style={{
-					flex: 1,
-					alignItems: 'center',
-					justifyContent: 'center',
-				}}
-			>
-				<Section>
-					<SectionContent>
-						<Button
-						text={isDarkmode ? "Light Mode" : "Dark Mode"}
-						status={isDarkmode ? "success" : "warning"}
-						onPress={() => {
-							if (isDarkmode) {
-							setTheme("light");
-							} else {
-							setTheme("dark");
-							}
-						}}
-						style={{
-							marginTop: 10,
-						}}
-						/>
-						<Button
-						status="danger"
-						text="Logout"
-						onPress={() => {
-							signOut(auth);
-						}}
-						style={{
-							marginTop: 10,
-						}}
-						/>
-					</SectionContent>
-				</Section>
 
-			</View>
-		</Layout>
-	);
+export default function App() {
+  return (
+    <SafeAreaView style={styles.container}>    
+      <Text style = {styles.title}>Settings</Text>
+      <Image 
+        style ={styles.icon}
+        source={ require('./assets/profile-user.png')}/>
+      <TouchableOpacity>
+        <Text style ={styles.optiontextf}>General</Text>
+      </TouchableOpacity>
+      <TouchableOpacity>
+          <Text style ={styles.optiontext}>Account</Text>
+      </TouchableOpacity>
+      <TouchableOpacity>
+          <Text style ={styles.optiontext}>Privacy</Text>
+      </TouchableOpacity>
+      <TouchableOpacity>
+          <Text style ={styles.optiontext}>Security</Text>
+      </TouchableOpacity>
+      <TouchableOpacity >
+          <Text style ={styles.optiontext}>Personalisation</Text>
+      </TouchableOpacity>
+      <TouchableOpacity>
+          <Text style ={styles.optiontext}>Help</Text>
+      </TouchableOpacity>
+      <Text style = {styles.ver}>Ver 1.0</Text>
+    </SafeAreaView>
+  );
 }
+
+const styles = StyleSheet.create({
+  container: {
+    marginTop: 40,
+    flex: 1,
+    backgroundColor: '#fff',
+    justifyContent: 'center',
+  },
+  title: {
+    marginTop: 0,
+    marginLeft: 0,
+    paddingVertical: 0,
+    color: '#20232a',
+    textAlign: 'center',
+    fontSize: 30,
+    fontWeight: 'bold',
+  },
+  icon: {
+    alignSelf: 'center',
+    marginTop: 30,
+    width: 150,
+    height: 150,
+  },
+  optiontextf:{
+    marginTop: 30,
+    padding: 10,
+    marginBottom: 20,
+    fontSize: 20,
+    fontWeight: 'light',
+    borderBottomColor: 'grey',
+    borderBottomWidth: StyleSheet.hairlineWidth,
+  },
+  optiontext: {
+    padding: 10,
+    marginBottom: 20,
+    fontSize: 20,
+    fontWeight: 'light',
+    borderBottomColor: 'grey',
+    borderBottomWidth: StyleSheet.hairlineWidth,
+  },
+  ver:{
+    marginTop: 50,
+    textAlign: 'center',
+  }
+});
+
