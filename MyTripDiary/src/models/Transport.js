@@ -1,5 +1,5 @@
 /** 
-* A constructor for the trip model
+* A constructor for the transport model
 * @param {string} name - Name of the transport, as shown to the user
 * @param {string} type - 'private' or 'public'
 * @param {boolean} isFree - Is the transport free of charge? (walking/cycling)
